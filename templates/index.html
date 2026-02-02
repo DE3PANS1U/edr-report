@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDR Report Hub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="bento-container">
+
+        <!-- Header Section -->
+        <header class="bento-item header-item">
+            <div class="header-content">
+                <h1>EDR Report Hub</h1>
+            </div>
+            <div class="header-status">
+                <span class="status-indicator online"></span> System Online
+            </div>
+        </header>
+
+        <!-- Main Upload Section -->
+        <main class="bento-item main-item" id="mainPanel">
+            <!-- Upload State -->
+            <div class="upload-section" id="uploadSection">
+                <div class="upload-box" id="uploadBox">
+                    <div class="upload-icon-wrapper">
+                        <div class="icon-circle"></div>
+                        <span class="upload-icon">📂</span>
+                    </div>
+                    <div class="upload-text">
+                        <h2>Upload Incident Data</h2>
+                        <p>Drag & drop or browse .xlsx files</p>
+                    </div>
+                    <input type="file" id="fileInput" accept=".xlsx,.xls" hidden>
+                    <button class="btn-primary" id="browseBtn">Select Source File</button>
+                    <div class="file-info" id="fileInfo"></div>
+                </div>
+            </div>
+
+            <!-- Processing State -->
+            <div class="progress-section hidden" id="progressSection">
+                <div class="progress-wrapper">
+                    <div class="spinner-exec">
+                        <div class="spinner-inner"></div>
+                    </div>
+                    <h2>Processing Data Stream</h2>
+                    <p id="progressText">Initializing analysis protocols...</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success State -->
+            <div class="success-section hidden" id="successSection">
+                <div class="success-wrapper">
+                    <div class="success-icon">🛡️</div>
+                    <h2>Report Generated</h2>
+                    <p id="successMessage">Security analysis complete</p>
+                    <div class="action-buttons">
+                        <button class="btn-success" id="downloadBtn">Download Secure Report</button>
+                        <button class="btn-ghost" id="newReportBtn">New Analysis</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error State -->
+            <div class="error-section hidden" id="errorSection">
+                <div class="error-wrapper">
+                    <div class="error-icon">⚠️</div>
+                    <h2>System Error</h2>
+                    <p id="errorMessage"></p>
+                    <button class="btn-ghost" id="retryBtn">Retry Operation</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Requirements & Stats Panel (Sidebar) -->
+        <aside class="bento-item info-item">
+            <div class="sidebar-section">
+                <h3><span class="icon">📋</span> Data Schema</h3>
+                <ul class="info-list">
+                    <li><span class="col-name">Entity</span> <span class="badge">STR</span></li>
+                    <li><span class="col-name">Trend</span> <span class="badge">TS</span></li>
+                    <li><span class="col-name">File</span> <span class="badge">OBJ</span></li>
+                    <li><span class="col-name">Severity</span> <span class="badge">INT</span></li>
+                    <li><span class="col-name">Status</span> <span class="badge">BOOL</span></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section" style="margin-top: 2rem;">
+                <h3><span class="icon">⚡</span> Node Status</h3>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <span class="stat-label">CORE</span>
+                        <span class="stat-value">ONLINE</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">DB</span>
+                        <span class="stat-value active">CONNECTED</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">PING</span>
+                        <span class="stat-value">14ms</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <footer class="bento-item footer-item">
+            <p>© 2026 EDR Hub | Designed by Deepanshu Patel</p>
+        </footer>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
